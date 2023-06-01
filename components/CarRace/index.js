@@ -11,25 +11,43 @@ import { initialCars, getRandomDistance } from "../../utils/utils";
 
 const finishLine = 200;
 
-export default function CarRace() {
-  const [cars, setCars] = useState(initialCars);
 
-  function moveCar(clickedCar) {
-    const coveredDistance = getRandomDistance();
+// change the variable Name with from car to carState and from setCar to setCarState
+
+
+export default function CarRace() {
+  //----------version with UseState
+  const [carsState, setCarsState] = useState(initialCars);
+
+
+
+  //TO DO HERE!!!
+
+  // function moveCar(clickedCar) {
+  //   const coveredDistance = getRandomDistance();
+  //   setCarsState({
+  //     carsState.map((car) =>{
+
+  //       if (carsState.emoji === clickedCar)
+
+
+
+
+
     console.log("clickedCar", clickedCar);
     console.log("coveredDistance", coveredDistance);
   }
 
-  const winner = cars.find((car) => car.position.x >= finishLine);
+  const winner = carsState.find((car) => car.position.x >= finishLine);
 
   return (
     <>
       {winner ? (
-        <Winner winner={winner} onRestart={() => setCars(initialCars)} />
+        <Winner winner={winner} onRestart={() => setCarsState(initialCars)} />
       ) : (
         <AllCarRoutes finishLine={finishLine}>
           <DistanceHeadline>Last Distance</DistanceHeadline>
-          {cars.map((car) => (
+          {carsState.map((car) => (
             <Fragment key={car.emoji}>
               <Track finishLine={finishLine}>
                 <CarButton
